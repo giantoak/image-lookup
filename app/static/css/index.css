@@ -1,0 +1,27 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+.body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.intro-title {
+    font-size: 24pt;
+}
+
+.intro-text {
+    font-size: 14pt;
+}
+
+.warning-text {
+    font-size: 12pt;
+    font-style: italic;
+}
+
+#content div {
+    margin: 3px;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+}
