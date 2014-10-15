@@ -15,16 +15,11 @@ filename='css/results.css') }}" >
 
 {% block content %}
 <div class='intro-title'>Results</div>
-<div class='intro-text'>From Google reverse image search API</div>
-<div id='results-container'>
-    <div id='results-header'>
-        <!-- dynamically append query information -->
-        <div id='query-img'></div>
-        <div id='best-query'></div>
-    </div>
-    <div id='results-main'>
-        <!-- dynamically append results -->
-    </div>
-</div>
+<div class='intro-text'>From Google reverse image search API. Search images are deleted from this server within 30 seconds of running the query.</div>
+<div id='loading-placeholder'></div>
+<table id='results-container'>
+    <th>Image</th>
+    <th>Exact matches</th>
+</table>
 
 {% endblock %}

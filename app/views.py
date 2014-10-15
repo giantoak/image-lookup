@@ -10,10 +10,13 @@ request, session
 from flask.ext.socketio import send, emit
 from werkzeug import secure_filename
 
+import json
 import os
 import sys
 import requests
 from urlparse import urljoin
+from threading import Timer
+
 @app.route('/')
 def root():
     return render_template('upload_root.html')
@@ -70,17 +73,26 @@ def stream_results():
         local_image_url = url_for('uploaded_file', filename=filename)
         public_url = urljoin(my_url, local_image_url)
         print('Requesting ' + public_url)
-        r = requests.get('http://www.google.com/searchbyimage?image_url=' +
-                     public_url, headers=headers)
-        
+
+        google_url = 'http://www.google.com/searchbyimage?image_url=' + public_url
+        r = requests.get(google_url, headers=headers)
         result = imgsch.parse_google_query(r.text)
-        
+        result.update({
+            'url': google_url,
+            'img': public_url,
+            'filename': actual_name
+        })
+
         if r.ok:
-            emit('result', result)
+            emit('result', json.dumps(result))
     
         else:
             logging.warn('Google API query returned code\
                          {}'.format(r.code))
-        
-        os.remove(os.path.join(app.config['UPLOAD_DIR'], filename))
 
+        # allow images to live for 30 seconds
+        t = Timer(30.0, delete_file, [filename])
+        t.start()
+
+def delete_file(f):
+    os.remove(os.path.join(app.config['UPLOAD_DIR'], f))

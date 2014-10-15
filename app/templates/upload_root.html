@@ -10,12 +10,10 @@ filename='css/index.css') }}" >
 
 {% block content %}
 <div class='intro-title'>Bulk reverse image search demo</div>
-<div class='intro-text'>Upload files for reverse image search</div>
-<div class='warning-text'>Warning: files will be exposed to the
-    public internet for several seconds during the image search.</div>
-
+<div class='intro-text'>Upload files for reverse image search. Hold down shift or ctrl while selecting to upload multiple files.</div>
 <form method="POST" enctype="multipart/form-data" action="/upload">
     <input type="file" name="file[]" multiple="">
-    <input type="submit" value="add">
+    <input type="submit" value="Search">
 </form>
+
 {% endblock %}

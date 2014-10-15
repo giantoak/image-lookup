@@ -8,4 +8,27 @@
 
 #results-container {
     font-size: 12pt;
+    margin-left: 50px;
+    margin-top: 30px;
+    border: 1px solid black;
+    min-width: 80%;
+    border-collapse: collapse;
+}
+
+th {
+    align: left;
+}
+
+.result {
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+}
+
+
+.input-image {
+    max-width: 600px;
+}
+
+.orig-query {
+    margin-top: 1em;
 }

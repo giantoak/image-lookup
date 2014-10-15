@@ -43,6 +43,8 @@ class ImgSearch(object):
                 output_matches.append(match.find(href=True)['href'])
             matches = output_matches
 
-        output = { "query" : str(text), "results" : str(matches) }        
+        output = { 
+            "query" : str(text), 
+            "results" : matches }
         return output 
 

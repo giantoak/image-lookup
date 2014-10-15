@@ -1,12 +1,14 @@
 .intro-title {
-    font-size: 24pt;
+    font-size: 16pt;
 }
 
 .intro-text {
-    font-size: 14pt;
+    font-size: 12pt;
+    margin-top: 1em;
+    margin-bottom: 3em;
 }
 
-.warning-text {
-    font-size: 12pt;
-    font-style: italic;
+form {
+    margin-left: 50px;
 }
+
