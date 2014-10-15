@@ -18,18 +18,31 @@ class ImgSearch(object):
 
         return '{name}.{ext}'.format(name=s, ext=ext)
     
-    def query_google(self, img):
+    def parse_google_query(self, html):
         """
-        Queries Google's Reverse Image Search API with the URL in `img`
+        Parses the html from the Google reverse image search
 
         Returns a response object like the following:
             {'query': `Google's best guess for a query`,
-             'results': [img1, img2, img3...]
+             'results': [link1, link2, link3...]
              }
 
-             Where img* are urls of returned images
         """
+        from bs4 import BeautifulSoup
+        import json
+
+        soup = BeautifulSoup(html)
+        text = soup.find("a", class_="qb-b")
+        if text:
+            text = text.find(text=True)
         
-        query = googbase.format(img)
-        
+        matches = soup.find_all("h3", class_="r")
+        if (matches):
+            output_matches = []
+            for match in matches:
+                output_matches.append(match.find(href=True)['href'])
+            matches = output_matches
+
+        output = { "query" : str(text), "results" : str(matches) }        
+        return output 
 
