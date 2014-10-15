@@ -90,8 +90,8 @@ def stream_results():
             logging.warn('Google API query returned code\
                          {}'.format(r.code))
 
-        # allow images to live for 30 seconds
-        t = Timer(30.0, delete_file, [filename])
+        # allow images to live for 5 minutes
+        t = Timer(600.0, delete_file, [filename])
         t.start()
 
 def delete_file(f):
