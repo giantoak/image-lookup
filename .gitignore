@@ -1,4 +1,5 @@
-flask/*
+flask
+build
 *.pyc
 *.swp
-
+app/uploads

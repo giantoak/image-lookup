@@ -1,0 +1,14 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+.body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+#content div {
+    margin: 10px;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+}
