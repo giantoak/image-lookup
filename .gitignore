@@ -1,5 +1,6 @@
 flask
 build
+opencv
 *.pyc
 *.swp
 app/uploads
