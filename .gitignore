@@ -4,3 +4,6 @@ opencv
 *.pyc
 *.swp
 app/uploads
+.idea/
+*~
+.DS_Store
