@@ -7,9 +7,9 @@ from app import app, socketio, socklogger, logger, imgsch
 import flask
 from flask import render_template, url_for, g, send_from_directory, request, session
 from flask.ext.socketio import send, emit
-from werkzeug import secure_filename
+from werkzeug.utils import secure_filename
 
-import json
+import simplejson as json
 import os
 import sys
 import requests
@@ -26,7 +26,7 @@ def root():
 def receive_upload():
     """
     Architecture design notes: /upload uploads all of the posted
-    files to the server, saves the file names in the global sesion
+    files to the server, saves the file names in the global session
     variable (g), and renders the client results page.
 
     On load, the client results page connects to a websocket, which
@@ -41,7 +41,7 @@ def receive_upload():
             obscured_fn = imgsch.get_filename(sf)
         except TypeError:
             print('Bad file extension in {}'.format(sf), file=sys.stderr)
-            #TODO: handle bad file extensions more formally
+            # TODO: handle bad file extensions more formally
             continue
 
         dest = os.path.join(app.config['UPLOAD_DIR'], obscured_fn)
