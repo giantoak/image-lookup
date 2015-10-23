@@ -10,13 +10,12 @@ class ImgSearch(object):
         """
         Generate 50-char long random filename
         """
-        s = ''.join(random.choice(ascii_uppercase + digits) for _ in range(50))
-
         name, ext = os.path.splitext(filename.lower())
         ext = ext.strip('.')
-        if not ext in self.img_exts:
+        if ext not in self.img_exts:
             raise TypeError('{} is not a valid image file extension'.format(ext))
 
+        s = ''.join(random.choice(ascii_uppercase + digits) for _ in range(50))
         return '{name}.{ext}'.format(name=s, ext=ext)
 
     def parse_google_query(self, html):
